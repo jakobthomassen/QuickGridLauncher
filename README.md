@@ -1,3 +1,5 @@
+![QuickGridLauncher Demo](assets/preview.gif)
+
 # QuickGridLauncher
 
 A lightweight, keyboard-driven application launcher for Windows with zero dependencies.
@@ -6,8 +8,6 @@ A lightweight, keyboard-driven application launcher for Windows with zero depend
 [![Latest Release](https://img.shields.io/github/v/release/jakobthomassen/QuickGridLauncher)](https://github.com/jakobthomassen/QuickGridLauncher/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/jakobthomassen/QuickGridLauncher/badge)](https://securityscorecards.dev/viewer/?uri=github.com/jakobthomassen/QuickGridLauncher)
-
-![QuickGridLauncher Demo](https://via.placeholder.com/800x400.png?text=Add+Demo+Screenshot+Here)
 
 ## ✨ Features
 

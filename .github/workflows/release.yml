@@ -1,0 +1,82 @@
+name: Release Build
+
+on:
+  push:
+    tags:
+      - "v*" # Triggers on version tags like v1.0.0
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Build Self-Contained
+        run: dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:PublishTrimmed=true /p:DebugType=None /p:DebugSymbols=false -o ./publish-sc
+
+      - name: Build Framework-Dependent
+        run: dotnet publish -c Release -r win-x64 --self-contained false /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false -o ./publish-fd
+
+      - name: Rename Executables
+        run: |
+          ren publish-sc\QuickGridLauncher.exe QuickGridLauncher-win-x64.exe
+          ren publish-fd\QuickGridLauncher.exe QuickGridLauncher-fd.exe
+        shell: cmd
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            publish-sc/QuickGridLauncher-win-x64.exe
+            publish-fd/QuickGridLauncher-fd.exe
+          body: |
+            ## QuickGridLauncher ${{ github.ref_name }}
+
+            A lightweight, keyboard-driven application launcher for Windows.
+
+            ### Download Options
+
+            **Recommended for most users:**
+            - **QuickGridLauncher-win-x64.exe** - Self-contained build (~70MB)
+              - Includes .NET runtime
+              - Works on any Windows 10+ system
+              - No installation required
+
+            **For users with .NET 10 installed:**
+            - **QuickGridLauncher-fd.exe** - Framework-dependent build (~5MB)
+              - Requires [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
+              - Smaller download size
+
+            ### Quick Start
+
+            1. Download `QuickGridLauncher-win-x64.exe`
+            2. Run it (Windows SmartScreen warning is normal - click "More info" → "Run anyway")
+            3. Press **Alt+Shift+Space** to launch
+            4. Press **Q** to add your applications
+
+            ### Changes
+
+            See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for full changelog.
+
+            ### Security Note
+
+            This application is not code-signed. Windows SmartScreen warnings are expected for unsigned open-source software. You can:
+            - Review the [source code](https://github.com/${{ github.repository }})
+            - Check the [build logs](https://github.com/${{ github.repository }}/actions)
+            - Build from source yourself
+
+            All builds are automated via GitHub Actions - no manual compilation.
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
