@@ -2,30 +2,30 @@
 
 A lightweight, keyboard-driven application launcher for Windows with zero dependencies.
 
-[![Downloads](https://img.shields.io/github/downloads/[YOUR-USERNAME]/QuickGridLauncher/total)](https://github.com/[YOUR-USERNAME]/QuickGridLauncher/releases)
-[![Latest Release](https://img.shields.io/github/v/release/[YOUR-USERNAME]/QuickGridLauncher)](https://github.com/[YOUR-USERNAME]/QuickGridLauncher/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/jakobthomassen/QuickGridLauncher/total)](https://github.com/jakobthomassen/QuickGridLauncher/releases)
+[![Latest Release](https://img.shields.io/github/v/release/jakobthomassen/QuickGridLauncher)](https://github.com/jakobthomassen/QuickGridLauncher/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/[YOUR-USERNAME]/QuickGridLauncher/badge)](https://securityscorecards.dev/viewer/?uri=github.com/[YOUR-USERNAME]/QuickGridLauncher)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/jakobthomassen/QuickGridLauncher/badge)](https://securityscorecards.dev/viewer/?uri=github.com/jakobthomassen/QuickGridLauncher)
 
 ![QuickGridLauncher Demo](https://via.placeholder.com/800x400.png?text=Add+Demo+Screenshot+Here)
 
 ## ✨ Features
 
-- ⌨️ **Global Hotkey** - Launch instantly from anywhere (Default: Alt+Shift+Space)
-- 🎯 **WASD Navigation** - Fast keyboard-driven grid navigation with wrap-around
-- 🎨 **Full Customization** - Colors, opacity, columns, and hotkey combinations
-- 🖱️ **Drag-and-Drop** - Reorder apps easily in settings
-- 💾 **Persistent Config** - All settings saved automatically
-- 🖥️ **Multi-Monitor** - Opens on your active monitor
-- 🚀 **Zero Dependencies** - No external libraries, pure WPF
-- 🔄 **Auto-Cleanup** - Missing apps removed automatically
-- ⚡ **Lightweight** - ~70MB self-contained, ~25-30MB RAM usage
+- ⌨**Global Hotkey** - Launch instantly from anywhere (Default: Alt+Shift+Space)
+- **WASD Navigation** - Fast keyboard-driven grid navigation with wrap-around
+- **Full Customization** - Colors, opacity, columns, and hotkey combinations
+- **Drag-and-Drop** - Reorder apps easily in settings
+- **Persistent Config** - All settings saved automatically
+- **Multi-Monitor** - Opens on your active monitor
+- **Zero Dependencies** - No external libraries, pure WPF
+- **Auto-Cleanup** - Missing apps removed automatically
+- **Lightweight** - ~70MB self-contained, ~25-30MB RAM usage
 
-## 📥 Installation
+## Installation
 
 ### Option 1: Download Release (Recommended)
 
-1. Go to [Releases](https://github.com/[YOUR-USERNAME]/QuickGridLauncher/releases/latest)
+1. Go to [Releases](https://github.com/jakobthomassen/QuickGridLauncher/releases/latest)
 2. Download **QuickGridLauncher-win-x64.exe** (recommended - works on any Windows 10+)
    - _Or_ **QuickGridLauncher-fd.exe** if you have [.NET 10](https://dotnet.microsoft.com/download) installed
 3. Run the executable
@@ -34,14 +34,14 @@ A lightweight, keyboard-driven application launcher for Windows with zero depend
 ### Option 2: Build from Source
 
 ```bash
-git clone https://github.com/[YOUR-USERNAME]/QuickGridLauncher.git
+git clone https://github.com/jakobthomassen/QuickGridLauncher.git
 cd QuickGridLauncher
 dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:PublishTrimmed=true
 ```
 
 The executable will be at: `bin\Release\net10.0-windows\win-x64\publish\QuickGridLauncher.exe`
 
-## 🎮 Usage
+## Usage
 
 ### Quick Start
 
@@ -70,7 +70,7 @@ The executable will be at: `bin\Release\net10.0-windows\win-x64\publish\QuickGri
 - **Startup:** Enable/disable run on Windows startup
 - **Apps:** Add, remove, and reorder applications via drag-and-drop
 
-## 🛡️ About SmartScreen Warnings
+## About SmartScreen Warnings
 
 Windows SmartScreen may warn that this app is from an "unknown publisher" because:
 
@@ -88,16 +88,16 @@ Windows SmartScreen may warn that this app is from an "unknown publisher" becaus
 
 - Review the source code yourself
 - Build from source using the instructions above
-- Check the [GitHub Actions build logs](https://github.com/[YOUR-USERNAME]/QuickGridLauncher/actions)
+- Check the [GitHub Actions build logs](https://github.com/jakobthomassen/QuickGridLauncher/actions)
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 - **.NET 10** - Latest .NET framework
 - **WPF** - Windows Presentation Foundation for UI
 - **Win32 API** - Global hotkey registration and multi-monitor support
 - **JSON** - Simple configuration persistence
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome! Please:
 
@@ -107,25 +107,23 @@ Contributions welcome! Please:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 Changelog
+## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for version history.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Inspired by launchers like [Wox](https://github.com/Wox-launcher/Wox), [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher), and [PowerToys Run](https://github.com/microsoft/PowerToys)
 - Built with ❤️ for keyboard-driven productivity
 
-## 📬 Support
+## Support
 
-- 🐛 **Bug Reports:** [Open an issue](https://github.com/[YOUR-USERNAME]/QuickGridLauncher/issues/new?template=bug_report.md)
-- 💡 **Feature Requests:** [Open an issue](https://github.com/[YOUR-USERNAME]/QuickGridLauncher/issues/new?template=feature_request.md)
-- 💬 **Discussions:** [GitHub Discussions](https://github.com/[YOUR-USERNAME]/QuickGridLauncher/discussions)
+- **Bug Reports:** [Open an issue](https://github.com/jakobthomassen/QuickGridLauncher/issues/new?template=bug_report.md)
+- **Feature Requests:** [Open an issue](https://github.com/jakobthomassen/QuickGridLauncher/issues/new?template=feature_request.md)
+- **Discussions:** [GitHub Discussions](https://github.com/jakobthomassen/QuickGridLauncher/discussions)
 
 ---
-
-**Note:** Replace `[YOUR-USERNAME]` with your GitHub username throughout this file.
