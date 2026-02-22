@@ -1,0 +1,112 @@
+﻿<Window x:Class="QuickGridLauncher.Windows.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Focusable="True"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        Topmost="True"
+        Opacity="0"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="Manual">
+
+    <!-- Outer Container -->
+    <Border x:Name="Container"
+        CornerRadius="18"
+        Padding="14"
+        Background="Transparent"
+        RenderTransformOrigin="0.5,0.5">
+
+        <Border.RenderTransform>
+            <ScaleTransform x:Name="ContainerScale" ScaleX="1" ScaleY="1"/>
+        </Border.RenderTransform>
+
+        <!-- Subtle shadow for depth -->
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="18"
+                              ShadowDepth="0"
+                              Opacity="0.35"/>
+        </Border.Effect>
+
+        <!-- Grid to hold both ItemsControl and EmptyState -->
+        <Grid>
+            <ItemsControl x:Name="AppGrid"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="4"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <!-- Tile -->
+                        <Border Width="70"
+            Height="70"
+            Margin="8"
+            CornerRadius="12"
+            RenderTransformOrigin="0.5,0.5">
+
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="{Binding Scale}"
+                            ScaleY="{Binding Scale}"/>
+                            </Border.RenderTransform>
+
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="#2A2A2A"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                            <Setter Property="BorderThickness" Value="2"/>
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="#7A3CFF"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+
+                            <Grid ClipToBounds="True">
+                                <Grid.Clip>
+                                    <RectangleGeometry Rect="0,0,70,70"
+                                   RadiusX="12"
+                                   RadiusY="12"/>
+                                </Grid.Clip>
+
+                                <Image Source="{Binding Icon}"
+                   Width="44"
+                   Height="44"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+                            </Grid>
+
+                        </Border>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+            <!-- Empty State Message -->
+            <TextBlock x:Name="EmptyStateText"
+                       Text="No applications configured&#x0a;Press Q to add apps"
+                       FontSize="14"
+                       Foreground="#888888"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Visibility="Collapsed"/>
+        </Grid>
+
+    </Border>
+
+</Window>
