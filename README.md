@@ -1,4 +1,4 @@
-![QuickGridLauncher Demo](assets/preview.gif)
+![QuickGridLauncher Demo](Assets/preview.gif)
 
 # QuickGridLauncher
 
