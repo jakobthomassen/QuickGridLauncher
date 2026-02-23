@@ -84,6 +84,6 @@ Want to work on something from this list?
 
 ---
 
-**Last Updated:** 2025-02-24
+**Last Updated:** 2025-02-23
 
 _This is a living document. Priorities may change based on user feedback and development capacity._
