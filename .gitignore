@@ -18,6 +18,7 @@ bld/
 *.user
 *.userosscache
 *.sln.docstates
+*.sln
 
 # User-specific files
 *.rsuser
