@@ -21,45 +21,33 @@ jobs:
       with:
         dotnet-version: '10.0.x'
     
-    - name: Build Self-Contained
-      run: dotnet publish QuickGridLauncher.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false -o ./publish-sc
+    - name: Build Self-Contained Release
+      run: dotnet publish QuickGridLauncher.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true /p:DebugType=None /p:DebugSymbols=false -o ./publish
     
-    - name: Build Framework-Dependent
-      run: dotnet publish QuickGridLauncher.csproj -c Release -r win-x64 --self-contained false /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false -o ./publish-fd
-    
-    - name: Rename Executables
-      run: |
-        ren publish-sc\QuickGridLauncher.exe QuickGridLauncher-win-x64.exe
-        ren publish-fd\QuickGridLauncher.exe QuickGridLauncher-fd.exe
+    - name: Rename Executable
+      run: ren publish\QuickGridLauncher.exe QuickGridLauncher.exe
       shell: cmd
     
     - name: Create Release
       uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564  # v2.0.4
       with:
         files: |
-          publish-sc/QuickGridLauncher-win-x64.exe
-          publish-fd/QuickGridLauncher-fd.exe
+          publish/QuickGridLauncher.exe
         body: |
           ## QuickGridLauncher ${{ github.ref_name }}
           
           A lightweight, keyboard-driven application launcher for Windows.
           
-          ### 📥 Download Options
+          ### 📥 Download
           
-          **Recommended for most users:**
-          - **QuickGridLauncher-win-x64.exe** - Self-contained build (~70MB)
-            - Includes .NET runtime
-            - Works on any Windows 10+ system
-            - No installation required
-          
-          **For users with .NET 10 installed:**
-          - **QuickGridLauncher-fd.exe** - Framework-dependent build (~5MB)
-            - Requires [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
-            - Smaller download size
+          **QuickGridLauncher.exe** - Self-contained build
+          - Includes .NET runtime - no installation required
+          - Works on any Windows 10+ (64-bit) system
+          - Single executable file
           
           ### 🚀 Quick Start
           
-          1. Download `QuickGridLauncher-win-x64.exe`
+          1. Download `QuickGridLauncher.exe`
           2. Run it (Windows SmartScreen warning is normal - click "More info" → "Run anyway")
           3. Press **Alt+Shift+Space** to launch
           4. Press **Q** to add your applications
