@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2025-02-23
+
+### Changed
+- Simplified release builds to single self-contained executable
+- Removed framework-dependent build (was not working correctly)
+- Optimized build process for better reliability
+- Now uses `Environment.ProcessPath` for reliable executable path detection
+- Improved error messages when restart fails
+
+### Fixed
+- Corrected build workflow to target .csproj instead of .sln
+- Disabled trimming for Windows Forms compatibility
+- Fixed executable size issues (now ~150MB for self-contained build)
+- Restart application functionality now works correctly in single-file deployments
+- Windows startup registry feature now works correctly in single-file deployments
+- Resolved IL3000 warnings about Assembly.Location in single-file apps
+
+### Technical
+- Added explicit `/p:PublishTrimmed=false` flag
+- Added `/p:IncludeNativeLibrariesForSelfExtract=true` for proper single-file packaging
+- Pinned GitHub Actions to specific commit SHAs for security
+
 ## [1.0.0] - 2025-02-23
 
 ### Added
