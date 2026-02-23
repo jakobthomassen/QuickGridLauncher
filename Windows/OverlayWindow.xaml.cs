@@ -310,13 +310,20 @@ namespace QuickGridLauncher.Windows
         {
             try
             {
-                // Get the current executable path
-                var exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                // Use Environment.ProcessPath for single-file apps
+                var exePath = Environment.ProcessPath;
 
-                // For .NET Core/5+, Location returns the .dll path, so we need to find the .exe
-                if (exePath.EndsWith(".dll"))
+                if (string.IsNullOrEmpty(exePath))
                 {
-                    exePath = exePath.Replace(".dll", ".exe");
+                    // Fallback: Get path from current process
+                    exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName;
+                }
+
+                if (string.IsNullOrEmpty(exePath))
+                {
+                    MessageBox.Show("Unable to determine application path. Please restart manually.",
+                        "Restart Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
                 }
 
                 // Start a new instance

@@ -20,8 +20,19 @@ namespace QuickGridLauncher.Services
 
                 if (enabled)
                 {
-                    var exePath = Assembly.GetExecutingAssembly().Location.Replace(".dll", ".exe");
-                    key.SetValue(AppName, $"\"{exePath}\"");
+                    // Use Environment.ProcessPath for single-file apps
+                    var exePath = Environment.ProcessPath;
+
+                    if (string.IsNullOrEmpty(exePath))
+                    {
+                        // Fallback
+                        exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName;
+                    }
+
+                    if (!string.IsNullOrEmpty(exePath))
+                    {
+                        key.SetValue(AppName, $"\"{exePath}\"");
+                    }
                 }
                 else
                 {
