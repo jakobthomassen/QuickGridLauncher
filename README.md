@@ -26,8 +26,7 @@ A lightweight, keyboard-driven application launcher for Windows with zero depend
 ### Option 1: Download Release (Recommended)
 
 1. Go to [Releases](https://github.com/jakobthomassen/QuickGridLauncher/releases/latest)
-2. Download **QuickGridLauncher-win-x64.exe** (recommended - works on any Windows 10+)
-   - _Or_ **QuickGridLauncher-fd.exe** if you have [.NET 10](https://dotnet.microsoft.com/download) installed
+2. Download **QuickGridLauncher-win-x64.exe**
 3. Run the executable
 4. If Windows SmartScreen appears, click **"More info"** → **"Run anyway"**
 
